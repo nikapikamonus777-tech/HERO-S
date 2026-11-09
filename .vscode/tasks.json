@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build hero",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "main.cpp",
+                "Level.cpp",
+                "Player.cpp",
+                "Game.cpp",
+                "-o",
+                "hero",
+                "-I/usr/local/include",
+                "-L/usr/local/lib",
+                "-lraylib",
+                "-lGL",
+                "-lm",
+                "-lpthread",
+                "-ldl",
+                "-lrt",
+                "-lX11"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "run hero",
+            "command": "./hero",
+            "dependsOn": "build hero",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+} 
